@@ -1,0 +1,27 @@
+.button {
+  display: inline-block;
+  background-color: var(--brand-charcoal, #1A1A1A);
+  color: var(--brand-offwhite, #FAF9F6);
+  padding: 12px 32px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--brand-charcoal, #1A1A1A);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: var(--brand-gold, #D4AF37);
+  color: var(--brand-charcoal, #1A1A1A);
+  border-color: var(--brand-gold, #D4AF37);
+}
+
+/* Optional variant for a secondary/outline look */
+.outline {
+  background-color: transparent;
+  color: var(--brand-charcoal);
+}
