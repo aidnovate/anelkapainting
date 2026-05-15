@@ -9,12 +9,12 @@ import styles from './style.module.css';
 
 export default function About() {
   const values = [
-    { icon: Award, title: "Quality First", desc: "We never cut corners. Premium paints, proper preparation, and precision — every single time." },
+    { icon: Award, title: "Quality First", desc: "We never cut corners. Premium paints, proper preparation, and precision ,every single time." },
     { icon: Shield, title: "Fully Insured", desc: "Your property is protected. We carry full liability insurance on every project, big or small." },
     { icon: Clock, title: "Punctual & Reliable", desc: "We show up when we say we will, and finish when we promised. No excuses, no delays." },
     { icon: Users, title: "Expert Team", desc: "Every member of our crew is trained, experienced, and takes genuine pride in their work." },
     { icon: Palette, title: "Colour Expertise", desc: "Our team stays current on colour trends and paint technology to give you the best advice." },
-    { icon: ThumbsUp, title: "100% Satisfaction", desc: "We do a final walkthrough with you. If anything isn't perfect, we fix it — no arguments." },
+    { icon: ThumbsUp, title: "100% Satisfaction", desc: "We do a final walkthrough with you. If anything isn't perfect, we fix it ,no arguments." },
   ];
 
   const stats = [
@@ -30,7 +30,7 @@ export default function About() {
       <section className={styles.hero}>
         <img 
           src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=900&q=80" 
-          alt="Prestige Painting Painter" 
+          alt="Anelka Painting Painter" 
           className={styles.heroImage} 
         />
         <div className={styles.heroOverlay} />
@@ -42,7 +42,7 @@ export default function About() {
             Five years of<br /><em>painting perfection.</em>
           </h1>
           <p className={styles.paragraph}>
-            Founded in Accra, Prestige Painting Services has grown from a two-man 
+            Founded in Kumasi, Anelka Painting Services has grown from a two-man 
             operation to Ghana's most trusted painting company, one perfectly finished wall at a time.
           </p>
         </div>
@@ -64,11 +64,11 @@ export default function About() {
               Built on<br /><em>hard work and craftsmanship.</em>
             </h2>
             <p className={styles.paragraph}>
-              Prestige Painting Services was founded with a simple belief: every property deserves 
+              Anelka Painting Services was founded with a simple belief: every property deserves 
               a finish that lasts, and every client deserves to be treated with respect and honesty.
             </p>
             <p className={styles.paragraph}>
-              From our first small repaint job in Accra, we've grown by doing the job right and letting 
+              From our first small repaint job in Kumasi, we've grown by doing the job right and letting 
               our results speak for us. Word of mouth has been our best marketing.
             </p>
 
