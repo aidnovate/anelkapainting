@@ -18,6 +18,7 @@ import exterior from './../../assets/images/exterior.jpg'
 import carbinet from './../../assets/images/carbinet.jpg'
 import wallpaper from './../../assets/images/wallpaper.jpg'
 import stencil from './../../assets/images/stencil.jpg'
+import PhilosophySection from '../../components/Philosophy';
 
 const index = () => {
     const trustItems = [
@@ -153,6 +154,9 @@ const navigate = useNavigate();
 
       </div>
     </section>
+
+    {/* Philosophy Section */}
+    <PhilosophySection />
 
     </>
   )
