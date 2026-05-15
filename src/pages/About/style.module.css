@@ -1,0 +1,246 @@
+.aboutPage {
+ padding-top: 80px;
+ box-sizing: border-box;
+  background-color: var(--brand-offwhite, #FAF9F6);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .container { padding: 0 40px; }
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  /* Matching the exact gradient from your inline style */
+  background: linear-gradient(105deg, rgba(253,249,244,0.97) 40%, rgba(253,249,244,0.25) 100%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+}
+
+.heroTitle {
+  font-family: serif;
+  font-size: clamp(36px, 5.5vw, 64px);
+  margin: 16px 0 18px;
+  color: var(--brand-charcoal);
+  line-height: 1.1;
+}
+
+.heroTitle em {
+  color: var(--brand-gold);
+  font-style: italic;
+}
+
+/* Story Section */
+.sectionPadding {
+  padding: 100px 40px;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 96px;
+}
+
+@media (min-width: 1024px) {
+  .storyGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+}
+
+.storyTitle {
+  font-family: serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  margin: 16px 0 20px;
+  color: var(--brand-charcoal);
+}
+
+.storyTitle em {
+  color: var(--brand-gold);
+  font-style: italic;
+}
+
+.paragraph {
+  color: var(--brand-slate);
+  line-height: 1.9;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+/* Stats Strip */
+.statsStrip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+  margin-bottom: 32px;
+}
+
+.statVal {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--brand-gold);
+  text-align: center;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--brand-slate);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Image Side */
+.imageWrapper {
+  position: relative;
+}
+
+.storyImageContainer {
+  border-radius: 20px;
+  overflow: hidden;
+  height: 480px;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.12);
+}
+
+.storyImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reviewBadge {
+  position: absolute;
+  bottom: -24px;
+  left: -12px;
+  background: white;
+  border: 1px solid rgba(26, 26, 26, 0.1);
+  border-radius: 14px;
+  padding: 20px 22px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+@media (min-width: 768px) {
+  .reviewBadge { left: -24px; }
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+/* Values Grid */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 96px;
+}
+
+@media (min-width: 768px) {
+  .valuesGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .valuesGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.valueCard {
+  background: white;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  border-radius: 14px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(212, 175, 55, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+/* Team Banner */
+.teamBanner {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  height: 340px;
+  display: flex;
+  align-items: center;
+}
+
+.teamImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.teamOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(26,39,68,0.85) 0%, rgba(26,39,68,0.4) 100%);
+}
+
+.teamContent {
+  position: relative;
+  z-index: 2;
+  padding: 0 40px;
+}
+
+@media (min-width: 768px) {
+  .teamContent { padding: 0 56px; }
+}
+
+/* Utility Tag */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}

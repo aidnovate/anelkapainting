@@ -1,5 +1,5 @@
 .pageWrapper {
-  padding: 80px 20px 0;
+  padding: 80px 40px 0;
   width: 100%;
   box-sizing: border-box;
   background-color: var(--brand-offwhite, #FAF9F6);
@@ -164,6 +164,7 @@
   max-width: 56rem;
   margin-left: auto;
   margin-right: auto;
+  color: #fff;
 }
 
 /* Specific class for the CTA button to override default Button colors */
