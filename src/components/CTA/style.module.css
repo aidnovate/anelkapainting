@@ -1,0 +1,104 @@
+.cta {
+  padding: 100px 0; /* py-section-padding */
+  background-color: var(--brand-charcoal, #1A1A1A);
+  color: var(--brand-offwhite, #FAF9F6);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Skewed decorative element in background */
+.decoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 33.333%;
+  height: 100%;
+  background-color: rgba(212, 175, 55, 0.05); /* brand-gold/5 */
+  transform: skewX(-12deg) translateX(50%);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 40px;
+  }
+}
+
+.title {
+  font-family: serif;
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive headline size */
+  line-height: 1.1;
+  margin-bottom: 32px;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--brand-slate, #e6eef7);
+  max-width: 42rem; /* max-w-2xl */
+  margin: 0 auto 48px auto;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px; /* space-y-6 */
+}
+
+@media (min-width: 768px) {
+  .actions {
+    flex-direction: row;
+    gap: 40px; /* md:space-x-10 */
+  }
+}
+
+/* Specific styling for the primary CTA button to override default Button colors */
+.primaryBtn {
+  background-color: var(--brand-offwhite) !important;
+  color: var(--brand-charcoal) !important;
+  border-color: var(--brand-offwhite) !important;
+  padding: 20px 48px !important;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .primaryBtn {
+    width: auto;
+  }
+}
+
+.primaryBtn:hover {
+  background-color: var(--brand-gold) !important;
+  border-color: var(--brand-gold) !important;
+  color: var(--brand-charcoal) !important;
+}
+
+/* Secondary text-style link */
+.portfolioLink {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brand-offwhite);
+  text-decoration: none;
+  border-bottom: 1px solid var(--brand-offwhite);
+  padding-bottom: 4px;
+  transition: all 0.3s ease;
+}
+
+.portfolioLink:hover {
+  color: var(--brand-gold);
+  border-color: var(--brand-gold);
+}

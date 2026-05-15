@@ -19,6 +19,8 @@ import carbinet from './../../assets/images/carbinet.jpg'
 import wallpaper from './../../assets/images/wallpaper.jpg'
 import stencil from './../../assets/images/stencil.jpg'
 import PhilosophySection from '../../components/Philosophy';
+import WhyChooseUs from '../../components/WhyChooseUs';
+import CTA from '../../components/CTA';
 
 const index = () => {
     const trustItems = [
@@ -157,6 +159,12 @@ const navigate = useNavigate();
 
     {/* Philosophy Section */}
     <PhilosophySection />
+
+    {/* Why Choose Us */}
+    <WhyChooseUs />
+
+    {/* CTA Section */}
+    <CTA />
 
     </>
   )
