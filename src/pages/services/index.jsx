@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -10,6 +11,45 @@ import wallpaper from './../../assets/images/wallpaper.jpg'
 import stencil from './../../assets/images/stencil.jpg'
 
 export default function OurServices() {
+  const businessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Anelka Painting Services",
+    "image": "https://anelkapainting.com/logo.png",
+    "@id": "https://anelkapainting.com/services",
+    "url": "https://anelkapainting.com/services",
+    "telephone": "+1-234-567-8900",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Main St",
+      "addressLocality": "YourCity",
+      "addressRegion": "YourState",
+      "postalCode": "12345",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 40.7128,
+      "longitude": -74.0060
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "08:00",
+      "closes": "18:00"
+    }],
+    "sameAs": [
+      "https://www.facebook.com/anelkapainting",
+      "https://www.instagram.com/anelkapainting"
+    ]
+  };
   const services = [
     {
       id: '01',
@@ -63,7 +103,24 @@ export default function OurServices() {
   ];
 
   return (
-    <div className={styles.pageWrapper}>
+    <>
+      <Helmet>
+        <title>Professional Painting Services | Anelka Painting</title>
+        <meta name="description" content="Discover our expert painting services: interior, exterior, cabinets, wallpaper, decorative finishes, and more. Serving YourCity with quality and care." />
+        <meta name="keywords" content="painting services, interior painting, exterior painting, cabinet painting, wallpaper installation, decorative finishes, commercial painting, YourCity painter" />
+        <link rel="canonical" href="https://anelkapainting.com/services" />
+        <meta property="og:title" content="Professional Painting Services | Anelka Painting" />
+        <meta property="og:description" content="Transform your space with our expert painting services. Interior, exterior, commercial, and more in YourCity." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://anelkapainting.com/services" />
+        <meta property="og:image" content="https://anelkapainting.com/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Professional Painting Services | Anelka Painting" />
+        <meta name="twitter:description" content="Transform your space with our expert painting services. Interior, exterior, commercial, and more in YourCity." />
+        <meta name="twitter:image" content="https://anelkapainting.com/og-image.jpg" />
+        <script type="application/ld+json">{JSON.stringify(businessSchema)}</script>
+      </Helmet>
+      <div className={styles.pageWrapper}>
       {/* Hero Section */}
       <section className={`${styles.hero} ${styles.container}`}>
         <motion.div
@@ -135,6 +192,7 @@ export default function OurServices() {
             </Button>
          </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

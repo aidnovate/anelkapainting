@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet';
 import Hero from '../../components/Hero'
 import styles from './style.module.css'
 import { motion } from 'framer-motion';
@@ -21,6 +22,46 @@ import stencil from './../../assets/images/stencil.jpg'
 import PhilosophySection from '../../components/Philosophy';
 import WhyChooseUs from '../../components/WhyChooseUs';
 import CTA from '../../components/CTA';
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Anelka Painting Services",
+  "image": "https://anelkapainting.com/logo.png",
+  "@id": "https://anelkapainting.com/",
+  "url": "https://anelkapainting.com/",
+  "telephone": "+1-234-567-8900",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main St",
+    "addressLocality": "YourCity",
+    "addressRegion": "YourState",
+    "postalCode": "12345",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.7128,
+    "longitude": -74.0060
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "08:00",
+    "closes": "18:00"
+  }],
+  "sameAs": [
+    "https://www.facebook.com/anelkapainting",
+    "https://www.instagram.com/anelkapainting"
+  ]
+};
 
 const index = () => {
     const trustItems = [
@@ -84,7 +125,23 @@ const navigate = useNavigate();
   };
   return (
     <>
-    <Hero />
+      <Helmet>
+        <title>Anelka Painting | Professional Painters in YourCity</title>
+        <meta name="description" content="Anelka Painting offers expert interior, exterior, and commercial painting services in YourCity. Transform your space with our skilled team." />
+        <meta name="keywords" content="painting services, professional painters, interior painting, exterior painting, commercial painting, YourCity painter" />
+        <link rel="canonical" href="https://anelkapainting.com/" />
+        <meta property="og:title" content="Anelka Painting | Professional Painters in YourCity" />
+        <meta property="og:description" content="Expert painting services for homes and businesses. Interior, exterior, and more in YourCity." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://anelkapainting.com/" />
+        <meta property="og:image" content="https://anelkapainting.com/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Anelka Painting | Professional Painters in YourCity" />
+        <meta name="twitter:description" content="Expert painting services for homes and businesses. Interior, exterior, and more in YourCity." />
+        <meta name="twitter:image" content="https://anelkapainting.com/og-image.jpg" />
+        <script type="application/ld+json">{JSON.stringify(businessSchema)}</script>
+      </Helmet>
+      <Hero />
 
     {/* Trust Strip */}
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { 
   Award, Shield, Clock, Users, Palette, ThumbsUp, 
@@ -6,6 +7,46 @@ import {
 } from 'lucide-react';
 import Button from './../../components/Button/index';
 import styles from './style.module.css';
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Anelka Painting Services",
+  "image": "https://anelkapainting.com/logo.png",
+  "@id": "https://anelkapainting.com/about",
+  "url": "https://anelkapainting.com/about",
+  "telephone": "+1-234-567-8900",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main St",
+    "addressLocality": "YourCity",
+    "addressRegion": "YourState",
+    "postalCode": "12345",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.7128,
+    "longitude": -74.0060
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "08:00",
+    "closes": "18:00"
+  }],
+  "sameAs": [
+    "https://www.facebook.com/anelkapainting",
+    "https://www.instagram.com/anelkapainting"
+  ]
+};
 
 export default function About() {
   const values = [
@@ -24,147 +65,155 @@ export default function About() {
   ];
 
   return (
-    <div className={styles.aboutPage}>
-      
-      {/* HERO SECTION */}
-      <section className={styles.hero}>
-        <img 
-          src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=900&q=80" 
-          alt="Anelka Painting Painter" 
-          className={styles.heroImage} 
-        />
-        <div className={styles.heroOverlay} />
-        <div className={`${styles.container} ${styles.heroContent}`}>
-          <span className={styles.tag} style={{ background: 'rgba(212, 175, 55, 0.1)', color: '#D4AF37' }}>
-            About Us
-          </span>
-          <h1 className={styles.heroTitle}>
-            Five years of<br /><em>painting perfection.</em>
-          </h1>
-          <p className={styles.paragraph}>
-            Founded in Kumasi, Anelka Painting Services has grown from a two-man 
-            operation to Ghana's most trusted painting company, one perfectly finished wall at a time.
-          </p>
-        </div>
-      </section>
-
-      <div className={`${styles.container} ${styles.sectionPadding}`}>
-        
-        {/* STORY SECTION */}
-        <div className={styles.storyGrid}>
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className={styles.tag} style={{ background: 'rgba(212, 175, 55, 0.1)', color: '#D4AF37' }}>
-              Our Story
-            </span>
-            <h2 className={styles.storyTitle}>
-              Built on<br /><em>hard work and craftsmanship.</em>
-            </h2>
-            <p className={styles.paragraph}>
-              Anelka Painting Services was founded with a simple belief: every property deserves 
-              a finish that lasts, and every client deserves to be treated with respect and honesty.
-            </p>
-            <p className={styles.paragraph}>
-              From our first small repaint job in Kumasi, we've grown by doing the job right and letting 
-              our results speak for us. Word of mouth has been our best marketing.
-            </p>
-
-            <div className={styles.statsStrip}>
-              {stats.map((s, i) => (
-                <div key={i}>
-                  <div className={styles.statVal}>{s.val}</div>
-                  <div className={styles.statLabel}>{s.label}</div>
-                </div>
-              ))}
-            </div>
-
-            <Button to="/quote" variant="outline">
-              Work With Us <ArrowRight size={16} style={{ marginLeft: 8 }} />
-            </Button>
-          </motion.div>
-
-          <motion.div 
-            className={styles.imageWrapper}
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-          >
-            <div className={styles.storyImageContainer}>
-              <img 
-                src="https://images.unsplash.com/photo-1562619371-b67725b6fde2?q=80&w=800" 
-                alt="Our Work" 
-                className={styles.storyImage} 
-              />
-            </div>
-            <div className={styles.reviewBadge}>
-              <div className={styles.stars}>
-                {[1, 2, 3, 4, 5].map(s => <Star key={s} size={13} fill="#D4AF37" color="#D4AF37" />)}
-              </div>
-              <div style={{ fontFamily: 'serif', fontSize: 16, fontWeight: 700 }}>Rated 4.9/5</div>
-              <div style={{ fontSize: 11, color: '#708090' }}>from 200+ reviews</div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* VALUES SECTION */}
-        <div style={{ textAlign: 'center', marginBottom: 60 }}>
-          <span className={styles.tag} style={{ background: 'rgba(212, 175, 55, 0.1)', color: '#D4AF37' }}>
-            Our Values
-          </span>
-          <h2 className={styles.storyTitle}>The principles we paint by</h2>
-        </div>
-
-        <div className={styles.valuesGrid}>
-          {values.map((v, i) => (
-            <motion.div 
-              key={i} 
-              className={styles.valueCard}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.07 }}
-            >
-              <div className={styles.iconBox}>
-                <v.icon size={22} color="#D4AF37" />
-              </div>
-              <h4 style={{ fontSize: 16, fontWeight: 600, marginBottom: 8 }}>{v.title}</h4>
-              <p style={{ color: '#708090', fontSize: 13, lineHeight: 1.75 }}>{v.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* TEAM BANNER */}
-        <motion.div 
-          className={styles.teamBanner}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
+    <>
+      <Helmet>
+        <title>About Anelka Painting | Trusted Painters in YourCity</title>
+        <meta name="description" content="Learn about Anelka Painting, our values, team, and commitment to quality painting services in YourCity." />
+        <meta name="keywords" content="about anelka painting, painting company, trusted painters, YourCity painting" />
+        <link rel="canonical" href="https://anelkapainting.com/about" />
+        <meta property="og:title" content="About Anelka Painting | Trusted Painters in YourCity" />
+        <meta property="og:description" content="Discover our story, values, and why Anelka Painting is YourCity's most trusted painting company." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://anelkapainting.com/about" />
+        <meta property="og:image" content="https://anelkapainting.com/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Anelka Painting | Trusted Painters in YourCity" />
+        <meta name="twitter:description" content="Discover our story, values, and why Anelka Painting is YourCity's most trusted painting company." />
+        <meta name="twitter:image" content="https://anelkapainting.com/og-image.jpg" />
+        <script type="application/ld+json">{JSON.stringify(businessSchema)}</script>
+      </Helmet>
+      <div className={styles.aboutPage}>
+        {/* HERO SECTION */}
+        <section className={styles.hero}>
           <img 
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200" 
-            alt="The Prestige Team" 
-            className={styles.teamImage} 
+            src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=900&q=80" 
+            alt="Anelka Painting Painter" 
+            className={styles.heroImage} 
           />
-          <div className={styles.teamOverlay} />
-          <div className={styles.teamContent}>
-            <span className={styles.tag} style={{ background: 'rgba(255,255,255,0.15)', color: '#fff' }}>
-              Our Team
+          <div className={styles.heroOverlay} />
+          <div className={`${styles.container} ${styles.heroContent}`}>
+            <span className={styles.tag} style={{ background: 'rgba(212, 175, 55, 0.1)', color: '#D4AF37' }}>
+              About Us
             </span>
-            <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 40px)', color: '#fff', margin: '14px 0 12px', fontFamily: 'serif' }}>
-              A crew that cares.
-            </h2>
-            <p style={{ color: 'rgba(255,255,255,0.8)', maxWidth: 440, fontSize: 15, lineHeight: 1.85 }}>
-              Every painter on our team is vetted, trained, and committed to the Prestige standard. 
-              We don't send people we wouldn't trust in our own homes.
+            <h1 className={styles.heroTitle}>
+              Five years of<br /><em>painting perfection.</em>
+            </h1>
+            <p className={styles.paragraph}>
+              Founded in Kumasi, Anelka Painting Services has grown from a two-man 
+              operation to Ghana's most trusted painting company, one perfectly finished wall at a time.
             </p>
           </div>
-        </motion.div>
-
+        </section>
+        <div className={`${styles.container} ${styles.sectionPadding}`}>
+          {/* STORY SECTION */}
+          <div className={styles.storyGrid}>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className={styles.tag} style={{ background: 'rgba(212, 175, 55, 0.1)', color: '#D4AF37' }}>
+                Our Story
+              </span>
+              <h2 className={styles.storyTitle}>
+                Built on<br /><em>hard work and craftsmanship.</em>
+              </h2>
+              <p className={styles.paragraph}>
+                Anelka Painting Services was founded with a simple belief: every property deserves 
+                a finish that lasts, and every client deserves to be treated with respect and honesty.
+              </p>
+              <p className={styles.paragraph}>
+                From our first small repaint job in Kumasi, we've grown by doing the job right and letting 
+                our results speak for us. Word of mouth has been our best marketing.
+              </p>
+              <div className={styles.statsStrip}>
+                {stats.map((s, i) => (
+                  <div key={i}>
+                    <div className={styles.statVal}>{s.val}</div>
+                    <div className={styles.statLabel}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+              <Button to="/quote" variant="outline">
+                Work With Us <ArrowRight size={16} style={{ marginLeft: 8 }} />
+              </Button>
+            </motion.div>
+            <motion.div 
+              className={styles.imageWrapper}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+            >
+              <div className={styles.storyImageContainer}>
+                <img 
+                  src="https://images.unsplash.com/photo-1562619371-b67725b6fde2?q=80&w=800" 
+                  alt="Our Work" 
+                  className={styles.storyImage} 
+                />
+              </div>
+              <div className={styles.reviewBadge}>
+                <div className={styles.stars}>
+                  {[1, 2, 3, 4, 5].map(s => <Star key={s} size={13} fill="#D4AF37" color="#D4AF37" />)}
+                </div>
+                <div style={{ fontFamily: 'serif', fontSize: 16, fontWeight: 700 }}>Rated 4.9/5</div>
+                <div style={{ fontSize: 11, color: '#708090' }}>from 200+ reviews</div>
+              </div>
+            </motion.div>
+          </div>
+          {/* VALUES SECTION */}
+          <div style={{ textAlign: 'center', marginBottom: 60 }}>
+            <span className={styles.tag} style={{ background: 'rgba(212, 175, 55, 0.1)', color: '#D4AF37' }}>
+              Our Values
+            </span>
+            <h2 className={styles.storyTitle}>The principles we paint by</h2>
+          </div>
+          <div className={styles.valuesGrid}>
+            {values.map((v, i) => (
+              <motion.div 
+                key={i} 
+                className={styles.valueCard}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07 }}
+              >
+                <div className={styles.iconBox}>
+                  <v.icon size={22} color="#D4AF37" />
+                </div>
+                <h4 style={{ fontSize: 16, fontWeight: 600, marginBottom: 8 }}>{v.title}</h4>
+                <p style={{ color: '#708090', fontSize: 13, lineHeight: 1.75 }}>{v.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          {/* TEAM BANNER */}
+          <motion.div 
+            className={styles.teamBanner}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <img 
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200" 
+              alt="The Prestige Team" 
+              className={styles.teamImage} 
+            />
+            <div className={styles.teamOverlay} />
+            <div className={styles.teamContent}>
+              <span className={styles.tag} style={{ background: 'rgba(255,255,255,0.15)', color: '#fff' }}>
+                Our Team
+              </span>
+              <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 40px)', color: '#fff', margin: '14px 0 12px', fontFamily: 'serif' }}>
+                A crew that cares.
+              </h2>
+              <p style={{ color: 'rgba(255,255,255,0.8)', maxWidth: 440, fontSize: 15, lineHeight: 1.85 }}>
+                Every painter on our team is vetted, trained, and committed to the Prestige standard. 
+                We don't send people we wouldn't trust in our own homes.
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

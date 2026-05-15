@@ -1,7 +1,48 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { ArrowRight, Home, Building2, Landmark, Check } from 'lucide-react';
 import styles from './style.module.css';
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Anelka Painting Services",
+  "image": "https://anelkapainting.com/logo.png",
+  "@id": "https://anelkapainting.com/quote",
+  "url": "https://anelkapainting.com/quote",
+  "telephone": "+1-234-567-8900",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main St",
+    "addressLocality": "YourCity",
+    "addressRegion": "YourState",
+    "postalCode": "12345",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.7128,
+    "longitude": -74.0060
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "08:00",
+    "closes": "18:00"
+  }],
+  "sameAs": [
+    "https://www.facebook.com/anelkapainting",
+    "https://www.instagram.com/anelkapainting"
+  ]
+};
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -32,121 +73,131 @@ export default function Contact() {
   };
 
   return (
-    <div className={styles.pageWrapper}>
-      <main className={styles.container}>
-        <div className={styles.decoration} />
-
-        <div className={styles.formCol}>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={styles.heroHeader}
-          >
-            <span className={styles.label}>Initial Consultation</span>
-            <h1 className={styles.title}>Begin Your<br />Transformation</h1>
-            <p className={styles.description}>
-              Every masterpiece begins with a conversation. Detail your vision below, and our master craftsmen will prepare a bespoke proposal.
-            </p>
-          </motion.div>
-
-          <form onSubmit={handleSubmit}>
-            
-            {/* SECTION 01: SCOPE */}
-            <section className={styles.formSection}>
-              <div className={styles.sectionHeader}>
-                <span className={styles.stepNumber}>01</span>
-                <h2 className={styles.sectionTitle}>The Canvas</h2>
-              </div>
-              
-              <div className={styles.scopeGrid}>
-                <span className={styles.label} style={{ color: '#708090' }}>Project Scope</span>
-                {scopes.map(scope => (
-                  <div 
-                    key={scope.id}
-                    onClick={() => setFormData({...formData, scope: scope.id})}
-                    className={`${styles.scopeCard} ${formData.scope === scope.id ? styles.scopeCardActive : ''}`}
-                  >
-                    {formData.scope === scope.id && <Check className={styles.checkIcon} size={16} />}
-                    <div style={{ color: formData.scope === scope.id ? '#1A1A1A' : '#708090', marginBottom: 16 }}>{scope.icon}</div>
-                    <h3 style={{ fontSize: '1.25rem', marginBottom: 8 }}>{scope.title}</h3>
-                    <p style={{ color: '#708090', fontSize: '0.875rem' }}>{scope.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* SECTION 02: VIBE */}
-            <section className={styles.formSection}>
-              <div className={styles.sectionHeader}>
-                <span className={styles.stepNumber}>02</span>
-                <h2 className={styles.sectionTitle}>The Aesthetic</h2>
-              </div>
-              <div className={styles.vibeGrid}>
-                {vibes.map(vibe => (
-                  <div 
-                    key={vibe.id}
-                    onClick={() => setFormData({...formData, vibe: vibe.id})}
-                    className={`${styles.vibeCard} ${formData.vibe === vibe.id ? styles.vibeCardActive : ''}`}
-                  >
-                    <img src={vibe.img} className={styles.vibeImage} alt={vibe.title} />
-                    <div className={styles.vibeOverlay}>
-                      <span className={styles.label} style={{ color: '#FAF9F6', margin: 0 }}>{vibe.title}</span>
+    <>
+      <Helmet>
+        <title>Request a Quote | Anelka Painting in YourCity</title>
+        <meta name="description" content="Request a free quote for your painting project. Anelka Painting provides fast, accurate estimates for homes and businesses in YourCity." />
+        <meta name="keywords" content="painting quote, request estimate, painting cost, YourCity painting" />
+        <link rel="canonical" href="https://anelkapainting.com/quote" />
+        <meta property="og:title" content="Request a Quote | Anelka Painting in YourCity" />
+        <meta property="og:description" content="Get a free estimate for your painting project. Fast, accurate quotes from Anelka Painting in YourCity." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://anelkapainting.com/quote" />
+        <meta property="og:image" content="https://anelkapainting.com/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Request a Quote | Anelka Painting in YourCity" />
+        <meta name="twitter:description" content="Get a free estimate for your painting project. Fast, accurate quotes from Anelka Painting in YourCity." />
+        <meta name="twitter:image" content="https://anelkapainting.com/og-image.jpg" />
+        <script type="application/ld+json">{JSON.stringify(businessSchema)}</script>
+      </Helmet>
+      <div className={styles.pageWrapper}>
+        <main className={styles.container}>
+          <div className={styles.decoration} />
+          <div className={styles.formCol}>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={styles.heroHeader}
+            >
+              <span className={styles.label}>Initial Consultation</span>
+              <h1 className={styles.title}>Begin Your<br />Transformation</h1>
+              <p className={styles.description}>
+                Every masterpiece begins with a conversation. Detail your vision below, and our master craftsmen will prepare a bespoke proposal.
+              </p>
+            </motion.div>
+            <form onSubmit={handleSubmit}>
+              {/* SECTION 01: SCOPE */}
+              <section className={styles.formSection}>
+                <div className={styles.sectionHeader}>
+                  <span className={styles.stepNumber}>01</span>
+                  <h2 className={styles.sectionTitle}>The Canvas</h2>
+                </div>
+                <div className={styles.scopeGrid}>
+                  <span className={styles.label} style={{ color: '#708090' }}>Project Scope</span>
+                  {scopes.map(scope => (
+                    <div 
+                      key={scope.id}
+                      onClick={() => setFormData({...formData, scope: scope.id})}
+                      className={`${styles.scopeCard} ${formData.scope === scope.id ? styles.scopeCardActive : ''}`}
+                    >
+                      {formData.scope === scope.id && <Check className={styles.checkIcon} size={16} />}
+                      <div style={{ color: formData.scope === scope.id ? '#1A1A1A' : '#708090', marginBottom: 16 }}>{scope.icon}</div>
+                      <h3 style={{ fontSize: '1.25rem', marginBottom: 8 }}>{scope.title}</h3>
+                      <p style={{ color: '#708090', fontSize: '0.875rem' }}>{scope.desc}</p>
                     </div>
+                  ))}
+                </div>
+              </section>
+              {/* SECTION 02: VIBE */}
+              <section className={styles.formSection}>
+                <div className={styles.sectionHeader}>
+                  <span className={styles.stepNumber}>02</span>
+                  <h2 className={styles.sectionTitle}>The Aesthetic</h2>
+                </div>
+                <div className={styles.vibeGrid}>
+                  {vibes.map(vibe => (
+                    <div 
+                      key={vibe.id}
+                      onClick={() => setFormData({...formData, vibe: vibe.id})}
+                      className={`${styles.vibeCard} ${formData.vibe === vibe.id ? styles.vibeCardActive : ''}`}
+                    >
+                      <img src={vibe.img} className={styles.vibeImage} alt={vibe.title} />
+                      <div className={styles.vibeOverlay}>
+                        <span className={styles.label} style={{ color: '#FAF9F6', margin: 0 }}>{vibe.title}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+              {/* SECTION 03: DETAILS */}
+              <section className={styles.formSection}>
+                <div className={styles.sectionHeader}>
+                  <span className={styles.stepNumber}>03</span>
+                  <h2 className={styles.sectionTitle}>The Principal</h2>
+                </div>
+                <div className={styles.inputGrid}>
+                  <div>
+                    <label className={styles.label} style={{ color: '#708090' }}>First Name</label>
+                    <input required type="text" className={styles.inputField} />
                   </div>
-                ))}
-              </div>
-            </section>
-
-            {/* SECTION 03: DETAILS */}
-            <section className={styles.formSection}>
-              <div className={styles.sectionHeader}>
-                <span className={styles.stepNumber}>03</span>
-                <h2 className={styles.sectionTitle}>The Principal</h2>
-              </div>
-              <div className={styles.inputGrid}>
-                <div>
-                  <label className={styles.label} style={{ color: '#708090' }}>First Name</label>
-                  <input required type="text" className={styles.inputField} />
+                  <div>
+                    <label className={styles.label} style={{ color: '#708090' }}>Last Name</label>
+                    <input required type="text" className={styles.inputField} />
+                  </div>
+                  <div className={styles.inputFull}>
+                    <label className={styles.label} style={{ color: '#708090' }}>Email</label>
+                    <input required type="email" className={styles.inputField} />
+                  </div>
+                  <div className={styles.inputFull}>
+                    <label className={styles.label} style={{ color: '#708090' }}>Details</label>
+                    <textarea 
+                      rows={4} 
+                      className={`${styles.inputField} styles.textArea`} 
+                      placeholder="Describe specific architectural features..." 
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label className={styles.label} style={{ color: '#708090' }}>Last Name</label>
-                  <input required type="text" className={styles.inputField} />
-                </div>
-                <div className={styles.inputFull}>
-                  <label className={styles.label} style={{ color: '#708090' }}>Email</label>
-                  <input required type="email" className={styles.inputField} />
-                </div>
-                <div className={styles.inputFull}>
-                  <label className={styles.label} style={{ color: '#708090' }}>Details</label>
-                  <textarea 
-                    rows={4} 
-                    className={`${styles.inputField} styles.textArea`} 
-                    placeholder="Describe specific architectural features..." 
-                  />
-                </div>
-              </div>
-
-              <button type="submit" className={styles.submitBtn}>
-                 <span>Submit Dossier</span>
-                 <ArrowRight size={14} />
-              </button>
-            </section>
-          </form>
-        </div>
-
-        {/* ASIDE IMAGE & QUOTE */}
-        <aside className={styles.aside}>
-           <div className={styles.stickyBox}>
+                <button type="submit" className={styles.submitBtn}>
+                  <span>Submit Dossier</span>
+                  <ArrowRight size={14} />
+                </button>
+              </section>
+            </form>
+          </div>
+          {/* ASIDE IMAGE & QUOTE */}
+          <aside className={styles.aside}>
+            <div className={styles.stickyBox}>
               <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200" className={styles.asideImage} alt="Interior" />
               <div className={styles.quoteCard}>
-                 <p className={styles.quoteText}>
-                   "The difference between a painted room and a masterpiece is the intention behind every brushstroke."
-                 </p>
-                 <span className={styles.label} style={{ color: '#708090', margin: 0 }}>— Master Artisan</span>
+                <p className={styles.quoteText}>
+                  "The difference between a painted room and a masterpiece is the intention behind every brushstroke."
+                </p>
+                <span className={styles.label} style={{ color: '#708090', margin: 0 }}> Master Artisan</span>
               </div>
-           </div>
-        </aside>
-      </main>
-    </div>
+            </div>
+          </aside>
+        </main>
+      </div>
+    </>
   );
 }
