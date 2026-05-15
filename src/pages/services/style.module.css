@@ -1,6 +1,7 @@
 .pageWrapper {
-  padding-top: 80px; /* Offset for fixed navbar */
+  padding: 80px 20px 0;
   width: 100%;
+  box-sizing: border-box;
   background-color: var(--brand-offwhite, #FAF9F6);
 }
 

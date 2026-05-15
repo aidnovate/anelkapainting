@@ -27,7 +27,7 @@ export default function Footer() {
             <div className={styles.linkList}>
               <Link to="/portfolio" className={styles.link}>PORTFOLIO</Link>
               <Link to="/services" className={styles.link}>SERVICES</Link>
-              <Link to="/gallery" className={styles.link}>GALLERY</Link>
+              {/* <Link to="/gallery" className={styles.link}>GALLERY</Link> */}
               <Link to="/quote" className={styles.link}>REQUEST QUOTE</Link>
             </div>
           </div>
